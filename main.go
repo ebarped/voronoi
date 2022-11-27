@@ -70,9 +70,7 @@ func (c Circle) Draw(img image.RGBA, color color.Color) {
 				img.Set(pixel.X, pixel.Y, color)
 			}
 		}
-
 	}
-
 }
 
 type Seed struct {
@@ -80,10 +78,7 @@ type Seed struct {
 	color color.Color
 }
 
-var (
-	COLOR_BACKGROUND = color.RGBA{18, 18, 18, 255}
-	COLOR_SEED       = color.Black
-)
+var COLOR_SEED = color.Black
 
 var colorList = []color.RGBA{
 	{0, 255, 255, 255},   // "Aqua"
@@ -103,14 +98,7 @@ var colorList = []color.RGBA{
 	{255, 255, 255, 255}, // "White"
 }
 
-func fillImage(img image.RGBA, c color.Color) {
-	for x := 0; x < imageWidth; x++ {
-		for y := 0; y < imageHeight; y++ {
-			img.Set(x, y, c)
-		}
-	}
-}
-
+// getClosestSeed returns the closest seed to point p
 func getClosestSeed(p image.Point, seeds []Seed) Seed {
 	currentDist := math.MaxFloat64
 	closestSeed := seeds[0]
@@ -131,9 +119,6 @@ func main() {
 
 	// create new png image
 	img := image.NewRGBA(image.Rectangle{upLeft, lowRight})
-
-	// fill image with background color
-	fillImage(*img, COLOR_BACKGROUND)
 
 	// generate the seed points
 	randomSeed := rand.NewSource(time.Now().UnixNano())
