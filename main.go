@@ -96,6 +96,11 @@ var colorList = []color.RGBA{
 	{128, 0, 128, 255},   // "Purple"
 	{255, 0, 0, 255},     // "Red"
 	{255, 255, 255, 255}, // "White"
+	{255, 165, 0, 255},   // "Orange"
+	{0, 250, 154, 255},   // "MediumSpringGreen"
+	{255, 215, 0, 255},   // "Gold"
+	{255, 127, 80, 255},  // "Coral"
+	{220, 20, 60, 255},   // "Crimson"
 }
 
 // getClosestSeed returns the closest seed to point p
@@ -127,8 +132,8 @@ func main() {
 	for i := 0; i < seedCount; i++ {
 		c := Circle{
 			image.Point{
-				random.Intn(imageWidth + 1),
-				random.Intn(imageHeight + 1),
+				X: random.Intn(imageWidth-seedRadius) + seedRadius,
+				Y: random.Intn(imageHeight-seedRadius) + seedRadius,
 			},
 			seedRadius,
 		}
